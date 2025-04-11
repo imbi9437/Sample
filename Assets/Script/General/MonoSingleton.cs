@@ -7,7 +7,7 @@ public abstract class MonoSingleton<T> : MonoBehaviour where T : MonoBehaviour
     private static object _lock = new object();
     private static bool _isApplicationQuit = false;
 
-    public bool isDestroy;
+    public bool isEternal;
 
     public static T Instance
     {
@@ -28,12 +28,12 @@ public abstract class MonoSingleton<T> : MonoBehaviour where T : MonoBehaviour
         }
     }
 
-    private void Awake()
+    protected virtual void Awake()
     {
         if (_instance) Destroy(gameObject);
         else _instance = this as T;
 
-        if (isDestroy) DontDestroyOnLoad(gameObject);
+        if (isEternal) DontDestroyOnLoad(gameObject);
     }
 
     private void OnApplicationQuit()
