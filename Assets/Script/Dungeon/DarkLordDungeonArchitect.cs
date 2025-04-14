@@ -33,7 +33,7 @@ public class DarkLordDungeonArchitect : MonoSingleton<DarkLordDungeonArchitect>
 
     private void Start()
     {
-        CreateEventGuid = Scheduler.Instance.Schedule(CreateDungeon, Interval, true);
+        //CreateEventGuid = Scheduler.Instance.Schedule(CreateDungeon, Interval, true);
     }
 
     private void Update()
@@ -97,9 +97,9 @@ public class DarkLordDungeonArchitect : MonoSingleton<DarkLordDungeonArchitect>
         return EnumUtil<Size>.GetRandom();
     }
 
-    private List<MonsterData> SelectMonsters()
+    private List<Monster> SelectMonsters()
     {
-        return null;
+        return new List<Monster>();
     }
 
     private List<TrapData> SelectTraps()
