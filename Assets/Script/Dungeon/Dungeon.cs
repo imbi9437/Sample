@@ -25,7 +25,7 @@ namespace Script.Enemy
         public Vector2Int pos;
         
         [Space(10),Header("던전 외 정보")]
-        public List<MonsterData> monsters;
+        public List<Monster> monsters;
         public List<TrapData> traps;
         public List<DungeonTraitData> traits;
         public List<ItemData> rewards;  // todo : Change class to Reward => for item Count And NoneItem(ex: Gold, Information)

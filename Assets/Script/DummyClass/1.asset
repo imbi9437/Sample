@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9998793a93d5e814392dc8f1acfc8662, type: 3}
+  m_Name: 1
+  m_EditorClassIdentifier: 
+  id: 1
+  monsterName: 1
+  icon: {fileID: 0}
+  type: 0
+  race: 0
+  element: 0
+  grade: 0
+  baseTraits:
+  - traitData: {fileID: 11400000, guid: dc01f667f0cdfe84f865f2b84a918ca3, type: 2}
+    grade: 3
+  baseCombatData:
+    hp: 60
+    attack: 3
+    defence: 7
