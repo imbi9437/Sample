@@ -63,7 +63,6 @@ namespace Script.Generic.Scheduler
                 _ => throw new ArgumentOutOfRangeException()
             };
             
-            Debug.Log(check);
             return check;
         }
     }
