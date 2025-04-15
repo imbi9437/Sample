@@ -55,13 +55,11 @@ public class DarkLordDungeonArchitect : MonoSingleton<DarkLordDungeonArchitect>
     }
 
     #region 던전 생성
-
-    /// <summary>
-    /// 추후 DB에서 생성하고 인스턴스하기
-    /// 던전 데이터 클래스 생성자로 바꾸기
-    /// </summary>
+    
     private void CreateDungeon()
     {
+        // todo : Dungeon Factory static 클래스 생성 및 인스턴스화 위임 & 특성 효과 발현 인터페이스 실행
+        
         Dungeon dungeon = new Dungeon();
 
         dungeon.id = Guid.NewGuid().ToString();
@@ -72,6 +70,12 @@ public class DarkLordDungeonArchitect : MonoSingleton<DarkLordDungeonArchitect>
         dungeon.monsters = SelectMonsters();
         dungeon.traps = SelectTraps();
         dungeon.traits = SelectTraits();
+
+        foreach (var trait in dungeon.traits)
+        {
+            var effect = DungeonTraitEffectSystem.GetEffect(trait.traitData.id);
+            effect.ApplyTo(dungeon,trait.grade);
+        }
 
         DungeonDic.TryAdd(dungeon.id, dungeon);
     }
@@ -107,9 +111,9 @@ public class DarkLordDungeonArchitect : MonoSingleton<DarkLordDungeonArchitect>
         return null;
     }
 
-    private List<DungeonTraitData> SelectTraits()
+    private List<DungeonTrait> SelectTraits()
     {
-        return null;
+        return new List<DungeonTrait>();
     }
 
     private List<ItemData> SelectRewards()
