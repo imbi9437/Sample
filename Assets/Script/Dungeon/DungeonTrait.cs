@@ -1,5 +1,6 @@
 using System;
 using Script.Data.Enemy;
+using Script.Data.General;
 using UnityEngine;
 
 namespace Script.Enemy
@@ -8,6 +9,6 @@ namespace Script.Enemy
     public class DungeonTrait
     {
         public DungeonTraitData traitData;
-        public TraitGrade grade;
+        public Grade grade;
     }
 }
