@@ -3,15 +3,8 @@ using UnityEngine;
 
 namespace Script.Enemy
 {
-    public interface IMonsterTraitEffect
+    public interface IMonsterTraitEffect : ITraitEffect
     {
-        //todo : 각 함수의 매개변수에 시스템 혹은 객체에 접근해 기능을 구현할 보조 클래스 추가
-        
-        /// <summary>
-        /// 몬스터 생성시 몬스터에 적용되는 특성 EX)해당 몬스터 생성 시 체력 증가
-        /// </summary>
-        public void ApplyTo(Monster monster, Grade grade);
-
         /// <summary>
         /// 던전 생성 후 몬스터 던전 배치 시 EX)해당 몬스터 던전 배치 시 환경 오염 효과 부여
         /// </summary>
