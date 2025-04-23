@@ -1,7 +1,8 @@
 using System;
 using System.Collections.Generic;
+using Script.Data;
 using Script.Data.General;
-using Script.Order.Data;
+using Script.Trait;
 using UnityEngine;
 
 namespace Script.Order
@@ -14,8 +15,9 @@ namespace Script.Order
         public Race race;
         public Element element;
         
+        public AdventurerJobData job;
+        
         public CombatData stat;
-        public Job job;
-        public List<AdventureTrait> traits;
+        public List<TraitInstance> traits;
     }
 }
