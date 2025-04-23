@@ -1,8 +1,9 @@
 using System;
 using System.Collections.Generic;
-using Script.Data.Enemy;
 using Script.Enemy;
+using Script.Enum;
 using Script.Generic.Scheduler;
+using Script.Trait;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -73,8 +74,10 @@ public class DarkLordDungeonArchitect : MonoSingleton<DarkLordDungeonArchitect>
 
         foreach (var trait in dungeon.traits)
         {
-            var effect = DungeonTraitEffectSystem.GetEffect(trait.traitData.id);
-            effect.ApplyTo(dungeon,trait.grade);
+            var effect = TraitEffectSystem.GetEffect(trait.traitData.traitId);
+            var context = new DungeonTraitContext();
+            
+            effect.ApplyTo(context);
         }
 
         DungeonDic.TryAdd(dungeon.id, dungeon);
@@ -111,9 +114,9 @@ public class DarkLordDungeonArchitect : MonoSingleton<DarkLordDungeonArchitect>
         return null;
     }
 
-    private List<DungeonTrait> SelectTraits()
+    private List<TraitInstance> SelectTraits()
     {
-        return new List<DungeonTrait>();
+        return new List<TraitInstance>();
     }
 
     private List<ItemData> SelectRewards()

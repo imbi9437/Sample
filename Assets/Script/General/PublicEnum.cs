@@ -37,11 +37,5 @@ namespace Script.Data.General
         EX
     }
     
-    public enum MonsterType
-    {
-        Normal,
-        Named,
-        Unique,
-        Boss
-    }
+    
 }

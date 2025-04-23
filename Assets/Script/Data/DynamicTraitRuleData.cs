@@ -1,8 +1,7 @@
 using System;
 using System.Collections.Generic;
-using Script.Data.Enemy;
 using Script.Data.General;
-using Script.Order.Data;
+using Script.Enum;
 using UnityEngine;
 
 namespace Script.Data

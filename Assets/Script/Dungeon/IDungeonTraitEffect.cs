@@ -2,14 +2,9 @@ using Script.Data.General;
 using Script.Enemy;
 using UnityEngine;
 
-public interface IDungeonTraitEffect
+public interface IDungeonTraitEffect : ITraitEffect
 {
     //todo : 각 함수의 매개변수에 시스템 혹은 객체에 접근해 기능을 구현할 보조 클래스 추가
-    
-    /// <summary>
-    /// 던전 생성 시 적용되는 특성 EX)던전이 정예화된 채로 생성됨
-    /// </summary>
-    public void ApplyTo(Dungeon dungeon, Grade grade);
 
     /// <summary>
     /// 던전 발견 시 적용되는 특성 EX)공개되는 던전 정보가 없도록 함

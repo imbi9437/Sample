@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
-using Script.Data.Enemy;
+using Script.Enum;
+using Script.Trait;
 using UnityEngine;
 
 namespace Script.Enemy
@@ -25,7 +26,7 @@ namespace Script.Enemy
         public Vector2Int pos;
         
         [Space(10),Header("던전 외 정보")]
-        public List<DungeonTrait> traits;
+        public List<TraitInstance> traits;
         public List<Monster> monsters;
         public List<TrapData> traps;    //todo : 
         public List<ItemData> rewards;  // todo : Change class to Reward => for item Count And NoneItem(ex: Gold, Information)
