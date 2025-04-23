@@ -36,4 +36,12 @@ namespace Script.Data.General
         SSS,
         EX
     }
+    
+    public enum MonsterType
+    {
+        Normal,
+        Named,
+        Unique,
+        Boss
+    }
 }

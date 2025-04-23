@@ -50,7 +50,7 @@ namespace Script.Data.Enemy
         public TimeSpan RemainingTime;  // todo : Change => for Calculate Time
         
         [Space(10),Header("던전 외 정보")]
-        public List<MonsterData> Monsters;
+        //public List<MonsterData> Monsters;
         public List<TrapData> Traps;
         public List<DungeonTraitData> Traits;
         public List<ItemData> Rewards;  // todo : Change class to Reward => for item Count And NoneItem(ex: Gold, Information)

@@ -19,4 +19,14 @@ public class CombatData
 
         return copy;
     }
+
+    public static CombatData operator *(CombatData combat, float multiplier)
+    {
+        var temp = combat.CopyTo();
+        temp.hp = Mathf.RoundToInt(combat.hp * multiplier);
+        temp.attack = Mathf.RoundToInt(combat.attack * multiplier);
+        temp.defence = Mathf.RoundToInt(combat.defence * multiplier);
+
+        return temp;
+    }
 }
