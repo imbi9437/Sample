@@ -12,8 +12,8 @@ namespace Script.Data
         public string name;
         public CombatData combatBonus;
         public List<string> jobTraitIds;
-        public List<AdventurerJobData> prevJob;
-        public List<AdventurerJobData> nextJob;
+        public List<string> prevJob;
+        public List<string> nextJob;
         public string description;
     }
 }
