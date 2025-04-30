@@ -11,22 +11,34 @@ namespace Script.Generic
 {
     public static partial class SaveLoadSystem
     {
-        private static readonly string DefaultPath;
+        public enum PathType
+        {
+            Default,
+            Resource,
+            StreamingAsset,
+            Editor,
+        }
+
+        private static readonly Dictionary<PathType, string> FolderPath;
 
         static SaveLoadSystem()
         {
-            DefaultPath = Application.persistentDataPath;
+            FolderPath = new Dictionary<PathType, string>();
+            FolderPath.TryAdd(PathType.Default, Application.persistentDataPath);
+            FolderPath.TryAdd(PathType.Resource, Path.Combine(Application.dataPath, "Resources"));
+            FolderPath.TryAdd(PathType.StreamingAsset, Application.streamingAssetsPath);
+            FolderPath.TryAdd(PathType.Editor, Path.Combine(Application.dataPath, "Editor"));
         }
 
-        public static void SaveData<T>(string folderName, string fileName, T data) =>
-            SaveDataAsync(folderName, fileName, data).Forget();
+        public static void SaveData<T>(string folderName, string fileName, T data, PathType type = PathType.Default) =>
+            SaveDataAsync(folderName, fileName, data, type).Forget();
 
-        public static void LoadData<T>(string folderName, string fileName) =>
-            LoadDataAsync<T>(folderName, fileName).Forget();
+        public static void LoadData<T>(string folderName, string fileName, PathType type = PathType.Default) =>
+            LoadDataAsync<T>(folderName, fileName, type).Forget();
         
-        private static async UniTaskVoid SaveDataAsync<T>(string folderName, string fileName, T data)
+        private static async UniTaskVoid SaveDataAsync<T>(string folderName, string fileName, T data, PathType type = PathType.Default)
         {
-            string folderPath = $"{DefaultPath}/{folderName}";
+            string folderPath = $"{FolderPath[type]}/{folderName}";
             CheckDirectory(folderPath);
 
             try
@@ -46,9 +58,9 @@ namespace Script.Generic
             }
         }
 
-        private static async UniTaskVoid LoadDataAsync<T>(string folderName, string fileName)
+        private static async UniTaskVoid LoadDataAsync<T>(string folderName, string fileName, PathType type = PathType.Default)
         {
-            string folderPath = $"{DefaultPath}/{folderName}";
+            string folderPath = $"{FolderPath[type]}/{folderName}";
 
             try
             {
