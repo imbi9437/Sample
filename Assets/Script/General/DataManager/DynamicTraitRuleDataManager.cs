@@ -7,14 +7,20 @@ namespace Script.Generic.Manager
 {
     public partial class DataManager
     {
-        public static List<DynamicTraitRuleData> raceRuleData;
-        public static List<DynamicTraitRuleData> elementRuleData;
-        public static List<DynamicTraitRuleData> adventurerRuleData;
-        public static List<DynamicTraitRuleData> monsterTypeRuleData;
-        public static List<DynamicTraitRuleData> gradeRuleData;
-        public static List<DynamicTraitRuleData> dynamicRuleData;
-
-        public static DynamicTraitRuleData GetRaceRuleData(string traitId) =>
-            raceRuleData.FirstOrDefault(s => s.traitId == traitId);
+        private static Dictionary<string, DynamicTraitRuleData> _dynamicTraitRuleData;
+        
+        private static void InitializeTraitRuleData()
+        {
+            _dynamicTraitRuleData = new Dictionary<string, DynamicTraitRuleData>();
+            ReadData<List<DynamicTraitRuleData>>("DynamicTraitRuleDB", list =>
+            {
+                foreach (var data in list)
+                {
+                    _dynamicTraitRuleData.TryAdd(data.traitId, data);
+                }
+            });
+        }
+        
+        public static DynamicTraitRuleData GetRuleData(string traitId) => _dynamicTraitRuleData[traitId];
     }
 }

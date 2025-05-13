@@ -13,12 +13,12 @@ public class TraitManager : MonoSingleton<TraitManager>
         List<TraitInstance> tempList = new List<TraitInstance>();
         TraitCondition condition = context.GetCondition();
 
-        RaceData raceData = DataManager.raceData.FirstOrDefault(s => s.race == condition.Race);
+        RaceData raceData = DataManager.GetRaceData(condition.Race);
         
         foreach (var traitId in raceData.traitIds)
         {
-            TraitData data = DataManager.GetRaceTrait(traitId);
-            DynamicTraitRuleData ruleData = DataManager.GetRaceRuleData(traitId);
+            TraitData data = DataManager.GetTraitData(traitId);
+            DynamicTraitRuleData ruleData = DataManager.GetRuleData(traitId);
             TraitInstance instance = CalculateTraitInstance(condition, data, ruleData);
             
             if (instance == null) continue;
