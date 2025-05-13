@@ -24,11 +24,11 @@ public static class RestAPI
         try
         {
             var res = await req.SendWebRequest().WithCancellation(cts.Token);
-
+            
             var results = res.downloadHandler.data;
             var message = Encoding.UTF8.GetString(results);
             
-            reVal.OnComplete?.Invoke(message);
+            reVal.Complete(message);
         }
         catch (Exception e)
         {
