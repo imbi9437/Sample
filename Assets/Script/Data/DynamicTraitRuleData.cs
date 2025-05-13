@@ -20,6 +20,7 @@ namespace Script.Data
         public string requireAtk;
         public string requireDef;
         public List<string> requireTraitIds;
+        public List<string> conflictTraitIds;
         public Dictionary<Grade, int> GradeWeight;
         public Dictionary<Grade, Dictionary<Grade, int>> ApplyTraitGradeWeight;
         public string description;
